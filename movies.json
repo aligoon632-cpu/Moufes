@@ -31,3 +31,36 @@
     ]
   }
 ]
+[
+  {
+    "title": "مدينة الظلال",
+    "genre": "تشويق",
+    "year": 2025,
+    "img": "https://picsum.photos/400/600?1",
+    "description": "فيلم غموض نفسي وحبكة مثيرة.",
+    "episodes": [
+      {"title": "الحلقة 1", "video": "https://example.com/video1.mp4"},
+      {"title": "الحلقة 2", "video": "https://example.com/video2.mp4"}
+    ]
+  },
+  {
+    "title": "الطريق الأحمر",
+    "genre": "أكشن",
+    "year": 2024,
+    "img": "https://picsum.photos/400/600?2",
+    "description": "أكشن وإثارة بلا توقف.",
+    "episodes": [
+      {"title": "الحلقة 1", "video": "https://example.com/video3.mp4"}
+    ]
+  },
+  {
+    "title": "ليلة صامتة",
+    "genre": "رعب",
+    "year": 2023,
+    "img": "https://picsum.photos/400/600?3",
+    "description": "رعب وغموض شديد.",
+    "episodes": [
+      {"title": "الحلقة 1", "video": "https://example.com/video4.mp4"}
+    ]
+  }
+]
