@@ -30,7 +30,7 @@
       {"title": "الحلقة 1", "video": "https://example.com/video4.mp4"}
 [
   {
-    "title": "مدينة الظلال",
+    "title":دينة الظلال",
     "genre": "تشويق",
     "year": 2025,
     "img": "https://picsum.photos/400/600?1",
@@ -41,7 +41,7 @@
     ]
   },
   {
-    "title": "الطريق الأحمر",
+    "title": "الطالأحمر",
     "genre": "أكشن",
     "year": 2024,
     "img": "https://picsum.photos/400/600?2",
@@ -51,7 +51,7 @@
     ]
   },
   {
-    "title": "ليلة صامتة",
+    "title": "لصامتة",
     "genre": "رعب",
     "year": 2023,
     "img": "https://picsum.photos/400/600?3",
