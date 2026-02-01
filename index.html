@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CinemaX Ultra</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#050505;
+    --card:#111;
+    --text:#fff;
+    --main:#e50914;
+    --accent:#ffd700;
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:'Cairo',sans-serif;
+    background:radial-gradient(circle at top,#111,var(--bg));
+    color:var(--text);
+}
+
+/* HEADER */
+header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:18px 20px;
+    font-size:28px;
+    font-weight:800;
+    color:var(--main);
+    text-shadow:0 0 15px var(--main);
+}
+
+/* MENU BUTTON */
+.menu-btn{
+    font-size:22px;
+    cursor:pointer;
+    color:#fff;
+}
+
+/* SIDEBAR */
+.sidebar{
+    position:fixed;
+    top:0;
+    right:-260px;
+    width:260px;
+    height:100%;
+    background:linear-gradient(180deg,#111,#000);
+    box-shadow:-10px 0 30px rgba(0,0,0,.8);
+    padding:20px;
+    transition:.4s;
+    z-index:1000;
+}
+
+.sidebar.active{right:0}
+
+.sidebar h3{
+    color:var(--accent);
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.sidebar a{
+    display:block;
+    padding:12px 15px;
+    margin-bottom:10px;
+    border-radius:12px;
+    color:#fff;
+    text-decoration:none;
+    background:rgba(255,255,255,0.05);
+    transition:.3s;
+}
+
+.sidebar a:hover{
+    background:var(--main);
+    color:#000;
+}
+
+/* OVERLAY */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:999;
+}
+
+.overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* SEARCH */
+.search{
+    display:flex;
+    justify-content:center;
+    margin:20px;
+}
+
+.search input{
+    width:90%;
+    max-width:420px;
+    padding:14px 20px;
+    border-radius:30px;
+    border:none;
+    outline:none;
+    background:rgba(255,255,255,0.05);
+    color:var(--text);
+    font-size:14px;
+    backdrop-filter:blur(10px);
+}
+
+/* SLIDER */
+.slider{
+    position:relative;
+    height:300px;
+    margin:20px;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:.8s;
+}
+
+.slide.active{opacity:1}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(.8);
+}
+
+/* SECTIONS */
+section{padding:20px}
+
+h2{
+    color:var(--accent);
+    border-right:4px solid var(--main);
+    padding-right:10px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:22px;
+    margin-top:20px;
+}
+
+/* CARD */
+.card{
+    background:linear-gradient(180deg,#111,#000);
+    border-radius:18px;
+    overflow:hidden;
+    transition:.4s;
+    box-shadow:0 10px 30px rgba(0,0,0,.8);
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 30px var(--main);
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.info{
+    padding:12px;
+    text-align:center;
+}
+
+.info h3{
+    font-size:14px;
+    margin:6px 0;
+}
+
+.watch{
+    display:inline-block;
+    margin-top:6px;
+    padding:6px 18px;
+    border-radius:20px;
+    background:var(--main);
+    color:#000;
+    font-size:12px;
+    text-decoration:none;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    color:#777;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<span class="menu-btn" onclick="openMenu()">☰</span>
+🎬 CINEMAX ULTRA
+</header>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+<h3>القائمة</h3>
+<a href="#">🏠 الرئيسية</a>
+<a href="#">🎥 أفلام</a>
+<a href="#">📺 مسلسلات</a>
+<a href="#">⭐ الأعلى تقييماً</a>
+<a href="#">ℹ️ من نحن</a>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="search">
+<input type="text" placeholder="ابحث عن فيلم أو مسلسل..." onkeyup="searchMovies(this.value)">
+</div>
+
+<div class="slider">
+<div class="slide active"><img src="https://picsum.photos/1200/500?1"></div>
+<div class="slide"><img src="https://picsum.photos/1200/500?2"></div>
+<div class="slide"><img src="https://picsum.photos/1200/500?3"></div>
+</div>
+
+<section>
+<h2>🎥 الأفلام</h2>
+<div class="grid">
+
+<div class="card"><img src="https://picsum.photos/400/600?11"><div class="info"><h3>مدينة الظلال</h3><a class="watch">مشاهدة</a></div></div>
+<div class="card"><img src="https://picsum.photos/400/600?12"><div class="info"><h3>النهاية الأخيرة</h3><a class="watch">مشاهدة</a></div></div>
+<div class="card"><img src="https://picsum.photos/400/600?13"><div class="info"><h3>ما وراء الليل</h3><a class="watch">مشاهدة</a></div></div>
+<div class="card"><img src="https://picsum.photos/400/600?14"><div class="info"><h3>الطريق الأحمر</h3><a class="watch">مشاهدة</a></div></div>
+
+</div>
+</section>
+
+<footer>
+CinemaX Ultra © 2026
+</footer>
+
+<script>
+/* SLIDER */
+let index=0;
+let slides=document.querySelectorAll(".slide");
+setInterval(()=>{
+    slides[index].classList.remove("active");
+    index=(index+1)%slides.length;
+    slides[index].classList.add("active");
+},5000);
+
+/* SEARCH */
+function searchMovies(val){
+    val=val.toLowerCase();
+    document.querySelectorAll(".card").forEach(card=>{
+        card.style.display=card.innerText.toLowerCase().includes(val)?"":"none";
+    });
+}
+
+/* SIDEBAR */
+function openMenu(){
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+}
+function closeMenu(){
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+}
+</script>
+
+</body>
+</html>
