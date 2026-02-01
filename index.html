@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CinemaX Pro</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<title>CinemaX Lite</title>
 <style>
 :root{
   --main:#e50914;
@@ -14,50 +13,54 @@
   --text:#fff;
   --muted:#aaa;
 }
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif;}
 body{background:var(--bg);color:var(--text);}
-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;padding:12px 20px;background:linear-gradient(90deg,#000,#111);box-shadow:0 5px 15px rgba(0,0,0,.7);}
-.logo{font-size:22px;font-weight:800;color:var(--main);text-shadow:0 0 12px var(--main);margin-right:15px}
-.toolbar{display:flex;align-items:center;gap:15px;flex:1}
-.toolbar input{flex:1;padding:8px 14px;border-radius:30px;border:none;background:rgba(255,255,255,0.08);color:#fff;outline:none}
-.toolbar button{padding:8px 14px;border-radius:20px;border:none;background:var(--gold);color:#000;cursor:pointer;transition:.3s}
-.toolbar button:hover{opacity:.8}
-.menu-btn{font-size:22px;cursor:pointer;color:var(--main)}
-.sidebar{position:fixed;top:0;right:-260px;width:260px;height:100%;background:linear-gradient(180deg,#111,#000);padding:20px;transition:.35s;z-index:60;overflow:auto;}
-.sidebar.active{right:0}
-.sidebar h3{color:var(--gold);margin-bottom:15px}
-.sidebar a{display:block;color:#fff;padding:10px 0;text-decoration:none;border-radius:10px;transition:.3s}
-.sidebar a:hover{background:var(--main);color:#000}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:.3s;z-index:55}
-.overlay.active{opacity:1;pointer-events:auto}
-.hero{position:relative;height:60vh;overflow:hidden;margin-bottom:20px;border-radius:15px}
-.slide{position:absolute;inset:0;opacity:0;transition:.8s}
-.slide.active{opacity:1}
-.slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.7)}
-.slide .cap{position:absolute;bottom:20px;right:20px;color:#fff;text-shadow:0 0 8px #000}
-section{padding:0 20px 20px}
-section h2{color:var(--gold);margin:10px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:15px}
-.card{background:var(--card);border-radius:15px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.7);transition:.35s;cursor:pointer}
-.card:hover{transform:translateY(-6px);box-shadow:0 0 25px var(--main)}
-.card img{width:100%;height:230px;object-fit:cover}
-.card .info{padding:10px;text-align:center}
-.card .info small{color:var(--muted)}
-ul{list-style:none;margin-top:10px} 
-ul li a{color:var(--text);text-decoration:none} 
-ul li a:hover{color:var(--main)}
+header{position:sticky;top:0;display:flex;align-items:center;padding:12px 20px;background:#111;z-index:50;box-shadow:0 4px 12px rgba(0,0,0,.7);}
+.logo{color:var(--main);font-weight:bold;font-size:22px;margin-right:15px;}
+.toolbar{display:flex;align-items:center;gap:10px;flex:1;}
+.toolbar input{flex:1;padding:8px 14px;border-radius:30px;border:none;background:rgba(255,255,255,0.08);color:#fff;outline:none;}
+.toolbar button{padding:8px 14px;border-radius:20px;border:none;background:var(--gold);color:#000;cursor:pointer;transition:.3s;}
+.toolbar button:hover{opacity:.85;}
+.menu-btn{cursor:pointer;color:var(--main);font-size:22px;margin-right:10px;}
+.sidebar{position:fixed;top:0;right:-250px;width:250px;height:100%;background:#222;padding:20px;transition:.3s;overflow:auto;z-index:60;}
+.sidebar.active{right:0;}
+.sidebar h3{color:var(--gold);margin-bottom:15px;}
+.sidebar a{display:block;color:#fff;text-decoration:none;margin:6px 0;padding:6px 10px;border-radius:10px;transition:.3s;}
+.sidebar a:hover{background:var(--main);color:#000;}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.3s;z-index:55;}
+.overlay.active{opacity:1;pointer-events:auto;}
+.hero{position:relative;height:50vh;margin-bottom:20px;border-radius:12px;overflow:hidden;}
+.slide{position:absolute;inset:0;opacity:0;transition:.5s;}
+.slide.active{opacity:1;}
+.slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.75);}
+.slide .cap{position:absolute;bottom:20px;right:20px;color:#fff;text-shadow:0 0 6px #000;}
+section{padding:0 20px 20px;}
+section h2{color:var(--gold);margin:10px 0;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{background:var(--card);border-radius:12px;overflow:hidden;cursor:pointer;transition:.3s;box-shadow:0 8px 20px rgba(0,0,0,.5);}
+.card:hover{transform:translateY(-4px);box-shadow:0 0 20px var(--main);}
+.card img{width:100%;height:220px;object-fit:cover;}
+.card .info{padding:8px;text-align:center;}
+.card .info small{color:var(--muted);}
+.detail{padding:20px;display:none;}
+.detail button{padding:6px 12px;margin-bottom:10px;border:none;border-radius:10px;background:var(--main);color:#fff;cursor:pointer;}
+ul{list-style:none;margin-top:10px;}
+ul li a{color:#fff;text-decoration:none;}
+ul li a:hover{color:var(--main);}
 </style>
 </head>
 <body>
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
 <header>
   <span class="menu-btn" onclick="toggleSidebar()">☰</span>
-  <div class="logo">CinemaX Pro</div>
+  <div class="logo">CinemaX Lite</div>
   <div class="toolbar">
     <input type="text" id="search" placeholder="ابحث عن فيلم أو مسلسل..." oninput="applySearch()">
-    <button onclick="toggleCinema()">🎬 وضع السينما</button>
+    <button onclick="alert('وضع السينما مفعل')">🎬 وضع السينما</button>
   </div>
 </header>
+
 <aside class="sidebar" id="sidebar">
   <h3>القائمة</h3>
   <a href="#" onclick="goHome()">🏠 الرئيسية</a>
@@ -65,6 +68,7 @@ ul li a:hover{color:var(--main)}
   <a href="#">🎭 حسب المزاج</a>
   <a href="#">❤️ المفضلة</a>
 </aside>
+
 <main id="home">
   <div class="hero" id="hero"></div>
   <section class="section">
@@ -72,12 +76,14 @@ ul li a:hover{color:var(--main)}
     <div class="grid" id="grid"></div>
   </section>
 </main>
-<section class="detail" id="detail" style="display:none; padding:20px;">
+
+<section class="detail" id="detail" class="detail">
   <button onclick="goHome()">⬅ رجوع</button>
   <h2 id="detail-title"></h2>
   <p id="detail-desc"></p>
   <ul id="episodes"></ul>
 </section>
+
 <script>
 const overlay=document.getElementById('overlay');
 const sidebar=document.getElementById('sidebar');
@@ -92,28 +98,32 @@ let movies=[];
 
 // تحميل JSON
 fetch('movies.json')
-  .then(res=>res.json())
-  .then(data=>{
-    movies=data;
-    createHero();
-    renderGrid();
-  })
-  .catch(err=>console.error(err));
+.then(res=>res.json())
+.then(data=>{
+  movies=data;
+  createHero();
+  renderGrid();
+})
+.catch(err=>console.error(err));
 
 function createHero(){
-  movies.forEach((m,i)=>{
+  hero.innerHTML='';
+  slides=[];
+  movies.slice(0,5).forEach((m,i)=>{
     const s=document.createElement('div');
     s.className='slide';
-    if(i===0)s.classList.add('active');
-    s.innerHTML=`<img src="${m.img}" class="lazy"><div class="cap"><h1>${m.title}</h1><small>${m.year} • ${m.genre}</small></div>`;
+    if(i===0) s.classList.add('active');
+    s.innerHTML=`<img src="${m.img}"><div class="cap"><h2>${m.title}</h2><small>${m.year} • ${m.genre}</small></div>`;
     hero.appendChild(s);
     slides.push(s);
   });
-  setInterval(()=>{
-    slides[currentSlide].classList.remove('active');
-    currentSlide=(currentSlide+1)%slides.length;
-    slides[currentSlide].classList.add('active');
-  },5000);
+  if(slides.length>1){
+    setInterval(()=>{
+      slides[currentSlide].classList.remove('active');
+      currentSlide=(currentSlide+1)%slides.length;
+      slides[currentSlide].classList.add('active');
+    },5000);
+  }
 }
 
 function renderGrid(){
@@ -121,7 +131,7 @@ function renderGrid(){
   movies.forEach(m=>{
     const c=document.createElement('div');
     c.className='card';
-    c.innerHTML=`<img src="${m.img}" class="lazy"><div class="info"><b>${m.title}</b><br><small>${m.genre} • ${m.year}</small></div>`;
+    c.innerHTML=`<img src="${m.img}"><div class="info"><b>${m.title}</b><br><small>${m.genre} • ${m.year}</small></div>`;
     c.onclick=()=>openDetail(m);
     grid.appendChild(c);
   });
@@ -150,24 +160,17 @@ function toggleSidebar(){
   overlay.classList.toggle('active');
 }
 
-function toggleCinema(){
-  document.body.classList.toggle('cinema');
-}
-
 function applySearch(){
   const q=document.getElementById('search').value.toLowerCase();
   grid.innerHTML='';
-  movies.filter(m=>m.title.toLowerCase().includes(q))
-        .forEach(m=>{
-          const c=document.createElement('div');
-          c.className='card';
-          c.innerHTML=`<img src="${m.img}" class="lazy"><div class="info"><b>${m.title}</b><br><small>${m.genre} • ${m.year}</small></div>`;
-          c.onclick=()=>openDetail(m);
-          grid.appendChild(c);
-        });
+  movies.filter(m=>m.title.toLowerCase().includes(q)).forEach(m=>{
+    const c=document.createElement('div');
+    c.className='card';
+    c.innerHTML=`<img src="${m.img}"><div class="info"><b>${m.title}</b><br><small>${m.genre} • ${m.year}</small></div>`;
+    c.onclick=()=>openDetail(m);
+    grid.appendChild(c);
+  });
 }
-
-window.onpopstate=()=>goHome();
 </script>
 </body>
 </html>
