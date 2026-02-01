@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CinemaX Lite</title>
+<title>CinemaX Lite Responsive</title>
 <style>
 :root{
   --main:#e50914;
@@ -15,13 +15,26 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif;}
 body{background:var(--bg);color:var(--text);}
-header{position:sticky;top:0;display:flex;align-items:center;padding:12px 20px;background:#111;z-index:50;box-shadow:0 4px 12px rgba(0,0,0,.7);}
+
+/* ----- HEADER ----- */
+header{
+  position:sticky;
+  top:0;
+  display:flex;
+  align-items:center;
+  padding:12px 20px;
+  background:#111;
+  z-index:50;
+  box-shadow:0 4px 12px rgba(0,0,0,.7);
+}
 .logo{color:var(--main);font-weight:bold;font-size:22px;margin-right:15px;}
 .toolbar{display:flex;align-items:center;gap:10px;flex:1;}
 .toolbar input{flex:1;padding:8px 14px;border-radius:30px;border:none;background:rgba(255,255,255,0.08);color:#fff;outline:none;}
 .toolbar button{padding:8px 14px;border-radius:20px;border:none;background:var(--gold);color:#000;cursor:pointer;transition:.3s;}
 .toolbar button:hover{opacity:.85;}
 .menu-btn{cursor:pointer;color:var(--main);font-size:22px;margin-right:10px;}
+
+/* ----- SIDEBAR ----- */
 .sidebar{position:fixed;top:0;right:-250px;width:250px;height:100%;background:#222;padding:20px;transition:.3s;overflow:auto;z-index:60;}
 .sidebar.active{right:0;}
 .sidebar h3{color:var(--gold);margin-bottom:15px;}
@@ -29,11 +42,15 @@ header{position:sticky;top:0;display:flex;align-items:center;padding:12px 20px;b
 .sidebar a:hover{background:var(--main);color:#000;}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.3s;z-index:55;}
 .overlay.active{opacity:1;pointer-events:auto;}
+
+/* ----- HERO SLIDER ----- */
 .hero{position:relative;height:50vh;margin-bottom:20px;border-radius:12px;overflow:hidden;}
 .slide{position:absolute;inset:0;opacity:0;transition:.5s;}
 .slide.active{opacity:1;}
 .slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.75);}
 .slide .cap{position:absolute;bottom:20px;right:20px;color:#fff;text-shadow:0 0 6px #000;}
+
+/* ----- GRID & CARDS ----- */
 section{padding:0 20px 20px;}
 section h2{color:var(--gold);margin:10px 0;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
@@ -42,11 +59,34 @@ section h2{color:var(--gold);margin:10px 0;}
 .card img{width:100%;height:220px;object-fit:cover;}
 .card .info{padding:8px;text-align:center;}
 .card .info small{color:var(--muted);}
+
+/* ----- DETAIL VIEW ----- */
 .detail{padding:20px;display:none;}
 .detail button{padding:6px 12px;margin-bottom:10px;border:none;border-radius:10px;background:var(--main);color:#fff;cursor:pointer;}
 ul{list-style:none;margin-top:10px;}
 ul li a{color:#fff;text-decoration:none;}
 ul li a:hover{color:var(--main);}
+
+/* ----- MOBILE SPECIFIC ----- */
+@media screen and (max-width:768px){
+  header{flex-direction:column;align-items:flex-start;padding:10px;}
+  .toolbar{flex-direction:column;width:100%;gap:8px;}
+  .toolbar input{width:100%;}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;}
+  .card img{height:180px;}
+  .hero{height:35vh;}
+  .sidebar{width:100%;right:-100%;}
+  .sidebar.active{right:0;}
+  .slide .cap{bottom:10px;right:10px;font-size:14px;}
+}
+
+/* ----- MOBILE SPECIAL: TAB VIEW ----- */
+@media screen and (max-width:480px){
+  .grid{display:flex;overflow-x:auto;gap:10px;padding-bottom:10px;}
+  .card{min-width:140px;flex:0 0 auto;}
+  .card img{height:160px;}
+  header{padding:8px;}
+}
 </style>
 </head>
 <body>
@@ -77,7 +117,7 @@ ul li a:hover{color:var(--main);}
   </section>
 </main>
 
-<section class="detail" id="detail" class="detail">
+<section class="detail" id="detail">
   <button onclick="goHome()">⬅ رجوع</button>
   <h2 id="detail-title"></h2>
   <p id="detail-desc"></p>
